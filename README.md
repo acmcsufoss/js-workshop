@@ -6,30 +6,44 @@
 
 Welcome to the world of JavaScript! This workshop is designed to help you get started with programming in JavaScript. Today, we'll cover the basics of JavaScript syntax.
 
-## Outline
+## Table of Contents
 
-- Beginning of JavaScript
-- JavaScript runtime and where to get one
-  - How to print to the console
-  - Simple expressions
-  - How to run a JavaScript file in a browser
-- How to declare a variable
-- Understand data types (string, number, boolean, object, array)
-- Flow control (if/else, switch, for, while, etc.)
-- Understand variable scoping
-- How to declare a function
-- Understand ES6 syntax (arrow functions, let/const, async/await, array methods, classes, destructuring, import/export, etc.)
-- Understand how to share code between files (import/export)
-- Understand import maps
-- Understand native and external libraries
-- Recommended exercises
-- Resources
+- [Beginning of JavaScript](#beginning-of-javascript)
+- [JavaScript runtime and where to get one](#javascript-runtime-and-where-to-get-one)
+  - [How to print to the console](#how-to-print-to-the-console)
+  - [Simple expressions](#simple-expressions)
+  - [How to run a JavaScript file in a browser](#how-to-run-a-javascript-file-in-a-browser)
+- [How to declare a variable](#how-to-declare-a-variable)
+- [Understand data types](#understand-data-types)
+  - [Common data types](#common-data-types)
+  - [Uncommon data types](#uncommon-data-types)
+  - [Plain JavaScript objects](#plain-javascript-objects)
+  - [Arrays](#arrays)
+- [Flow control](#flow-control)
+  - [Conditional statements](#conditional-statements)
+    - [`if` statement](#if-statement)
+    - [`switch` statement](#switch-statement)
+  - [Loops](#loops)
+    - [`for` loop](#for-loop)
+    - [`while` loop](#while-loop)
+- [Understand variable scoping](#understand-variable-scoping)
+- [How to declare a function](#how-to-declare-a-function)
+- [Understand native JavaScript APIs](#understand-native-javascript-apis)
+  - [Understand the DOM](#understand-the-dom)
+  - [Find all APIs on MDN](#find-all-apis-on-mdn)
+- [Understand how to share code between files](#understand-how-to-share-code-between-files)
+- [Understand ES6 syntax](#understand-es6-syntax)
+- [Understand import maps](#understand-import-maps)
+- [Understand external JavaScript libraries](#understand-external-javascript-libraries)
+- [Exercises](#exercises)
+- [Use cases of JavaScript](#use-cases-of-javascript)
+- [Resources](#resources)
 
 ## Beginning of JavaScript
 
 JavaScript, despite its widespread usage and popularity, had humble beginnings. In 1995, Brendan Eich developed the language in just a few days while working at Netscape Communications Corporation.
 
-JavaScript was created to provide a scripting language for web pages on the Netscape Navigator browser. It was originally named Mocha, but was renamed to LiveScript and then JavaScript. The name change was a marketing tactic to capitalize on the popularity of Java, a popular programming language at the time.
+JavaScript was created to provide a scripting language for web pages on the Netscape Navigator browser. It was originally named Mocha but was renamed to LiveScript and then JavaScript. The name change was a marketing tactic to capitalize on the popularity of Java, a popular programming language at the time.
 
 ## JavaScript runtime and where to get one
 
@@ -89,7 +103,7 @@ Now, spin up a local static HTTP file server.
 - You have [Node.js installed](https://nodejs.org/en/download/): `npx http-server .`
 - You have [Python installed](https://www.python.org/downloads/): `python -m http.server`
 
-Open `index.html` in your browser then open the developer tools and click on the "Console" tab.
+Open `index.html` in your browser, then open the developer tools and click on the "Console" tab.
 
 Your JavaScript code loads and executes as soon as the browser loads the page. From here, we can write JavaScript code in `script.js` and see the results on the `index.html` page.
 
@@ -102,15 +116,15 @@ let name = "Ethan";
 console.log("Hello, " + name);
 ```
 
-Only use `let` for variables that are reassigned Otherwise, use `const` for variables that are not reassigned. The JavaScript runtime will throw an error if you try to reassign a variable that is declared with `const`, which is useful for preventing accidental reassignments.
+Only use `let` for variables that are reassigned. Otherwise, use `const` for variables that are not reassigned. The JavaScript runtime will throw an error if you try to reassign a variable that is declared with `const`, which is useful for preventing accidental reassignments.
 
 ### Variable naming conventions
 
-For local variables, use camelCase (e.g. `firstName`, `lastName`).
+For local variables, use camelCase (e.g., `firstName`, `lastName`).
 
-For variables that represent an array, use the plural form of the variable name (e.g. `names`, `numbers`).
+For variables that represent an array, use the plural form of the variable name (e.g., `names`, `numbers`).
 
-For variables that represent a boolean value, use `is` as a prefix (e.g. `isReady`, `isComplete`).
+For variables that represent a boolean value, use `is` as a prefix (e.g., `isReady`, `isComplete`).
 
 Constant variables shared throughout the program should be written in `CONSTANT_CASE`.
 
@@ -128,8 +142,10 @@ These are data types that are featured in almost every JavaScript program.
 
 - `undefined` is a primitive value automatically assigned to variables that have just been declared or to function arguments for which there are no passed values.
 - `boolean` is a primitive value that represents a logical entity and can have two values: `true` or `false`.
-- `number` is a primitive value that represents a number. JavaScript uses the 64-bit floating-point format defined by the IEEE 754 standard. You may use `_` as a separator for large numbers (e.g. `1_000_000`).
+- `number` is a primitive value that represents a number. JavaScript uses the 64-bit floating-point format defined by the IEEE 754 standard. You may use `_` as a separator for large numbers (e.g., `1_000_000`).
 - `string` is a primitive value that represents a sequence of characters. Strings are immutable, meaning that they cannot be changed once they are created. You may use single quotes (`'`) or double quotes (`"`) to create a string literal.
+- `function` is a primitive value that represents a function.
+- `object` is a primitive value that represents a collection of properties. Arrays are considered objects.
 
 ```js
 let name;
@@ -150,14 +166,12 @@ console.log(typeof isStudent);
 These are data types that are not always featured in JavaScript programs.
 
 - `null` is a primitive value that represents the intentional absence of any object value. `null` is used when you want to explicitly assign a variable to nothing.
-- `bigint` is a primitive value that represents an integer with arbitrary precision. A `bigint` is created by appending `n` to the end of an integer literal (e.g. `1n`).
+- `bigint` is a primitive value that represents an integer with arbitrary precision. A `bigint` is created by appending `n` to the end of an integer literal (e.g., `1n`).
 - `symbol` is a primitive value that represents a unique identifier. You may use `Symbol()` to create a symbol.
-- `function` is a primitive value that represents a function.
-- `object` is a primitive value that represents a collection of properties. Arrays are considered objects.
 
 ### Plain JavaScript objects
 
-A plain old JavaScript object (POJO) is a record of unordered key-value pairs. Objects allow you to organize groups of related data. POJOs are comparable to Python `dict`ionaries.
+A plain old JavaScript object (POJO) is a record of unordered key-value pairs. Objects allow you to organize groups of related data. POJOs are comparable to Python dictionaries.
 
 ```js
 const person = {
@@ -165,6 +179,9 @@ const person = {
   balance: 1_000_000,
   isStudent: true,
 };
+
+console.table(person);
+console.log(typeof person);
 ```
 
 ### Arrays
@@ -195,7 +212,7 @@ console.log(typeof values);
 
 Learn more about the [JavaScript data types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures). See [`typeof` unary operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof).
 
-> **Note**: JSDoc is a way to add type hints to JavaScript code. JSDoc is not a language, but a convention for adding type hints to JavaScript code. JSDoc lives next to your JavaScript source code. TypeScript is simply a language on top of JavaScript that adds static typing by explicitly setting "type hints" to variables to satisfy the TypeScript compiler. TypeScript is a superset of JavaScript, meaning that any valid JavaScript code is also valid TypeScript code. TypeScript is compiled to JavaScript.
+> **Note**: JSDoc is a way to add type hints to JavaScript code. JSDoc is not a language but a convention for adding type hints to JavaScript code. JSDoc lives next to your JavaScript source code. TypeScript is simply a language on top of JavaScript that adds static typing by explicitly setting "type hints" to variables to satisfy the TypeScript compiler. TypeScript is a superset of JavaScript, meaning that any valid JavaScript code is also valid TypeScript code. TypeScript is compiled to JavaScript.
 
 ## Flow control
 
@@ -318,7 +335,7 @@ while (i < 10) {
 }
 ```
 
-Also, you can use a `do...while` loop, which executes a block of code at least once, and then repeatedly executes the block of code while a condition is true.
+Also, you can use a `do...while` loop, which executes a block of code at least once and then repeatedly executes the block of code while a condition is true.
 
 ```js
 do {
@@ -336,7 +353,7 @@ do {
 } while (i < 10);
 ```
 
-Choose the syntax that makes most sense for the problem you're trying to solve.
+Choose the syntax that makes the most sense for the problem you're trying to solve.
 
 ## Understand variable scoping
 
@@ -354,7 +371,7 @@ console.log(balance); // ReferenceError: balance is not defined
 
 ## How to declare a function
 
-Let's create a function that prints a message to the console. Functions are useful calling the same code multiple times without duplicate code.
+Let's create a function that prints a message to the console. Functions are useful for calling the same code multiple times without duplicate code.
 
 ```js
 function printGreeting() {
@@ -374,7 +391,7 @@ for (let i = 0; i < 10; i++) {
 
 ## Understand native JavaScript APIs
 
-JavaScript in your browser supports many APIs out of the box. It is truly mind-blowing how much you can in JavaScript, so here is a short list to get the idea.
+JavaScript in your browser supports many APIs out of the box. It is truly mind-blowing how much you can do in JavaScript, so here is a short list to get the idea.
 
 - [Web Storage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API): Store data in your user's browser.
 - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API): Make network requests.
@@ -427,7 +444,7 @@ Update our `index.html` file to include the new `main.js` file.
 
 ES6 is a prolific update to the JavaScript language. Introduced in 2015, ES6 added many new features to the language including arrow functions, `let` and `const`, promises, array methods, classes, import/export, `Map` and `Set`, and more.
 
-This workshop is using the latest best practices as of Summer 2023 which is heavily influenced by ES6. Think of variable declarations and `import`/`export`.
+This workshop is using the latest best practices as of Summer 2023, which is heavily influenced by ES6. Think of variable declarations and `import`/`export`.
 
 ## Understand import maps
 
@@ -451,7 +468,7 @@ We can move this JSON into a separate file and import it into our HTML file.
 
 ### Deno bonus
 
-Now, since Deno is a JavaScript runtime that strives for cross-compatibility with web browsers, we can use import maps in Deno as well. Let's learn how to run the code we have written for the browser, but in Deno.
+Now, since Deno is a JavaScript runtime that strives for cross-compatibility with web browsers, we can use import maps in Deno as well. Let's learn how to run the code we have written for the browser but in Deno.
 
 ```sh
 deno run --import-map=import_map.json main.js
