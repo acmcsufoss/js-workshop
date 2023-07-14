@@ -372,22 +372,6 @@ for (let i = 0; i < 10; i++) {
 }
 ```
 
-## Understand ES6 syntax
-
-(arrow functions, let/const, async/await, array methods, classes, import/export, Map/Set, etc.)
-
-TODO: Add content
-
-## Understand how to share code between files
-
-(import/export)
-
-TODO: Add content
-
-## Understand import maps
-
-TODO: Add content
-
 ## Understand native JavaScript APIs
 
 JavaScript in your browser supports many APIs out of the box. It is truly mind-blowing how much you can in JavaScript, so here is a short list to get the idea.
@@ -410,13 +394,80 @@ document.body.appendChild(paragraph);
 
 Mostly everything you need to know about JavaScript is on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript), a website maintained by Mozilla. This website provides comprehensive documentation for all of the APIs available in JavaScript, HTML, CSS, and more. Each API includes a supportability matrix that shows which browsers support the API.
 
-To use MDN, Google any JavaScript API and add "mdn" to the end of your search query. For example, if you want to learn about the `Array.prototype.map()` method, Google "array map mdn".
+To use MDN, Google any JavaScript API and add "mdn" to the end of your search query. For example, if you want to learn about the `Array.prototype.map()` method, Google "array map mdn". Or maybe you want to learn about the `fetch()` function, Google "fetch mdn".
+
+## Understand how to share code between files
+
+Let's say we want to expose `printGreeting` to other files. In order for other files to access `printGreeting`, we need to export it. The syntax for exporting any function or identifier is a prefix of `export` before the declaration.
+
+```diff
+- function printGreeting() {
++ export function printGreeting() {
+  console.log("Hello, world!");
+}
+```
+
+Let's add another file to our project. Create a new file called `main.js` and add the following code.
+
+```js
+import { printGreeting } from "/script.js";
+
+printGreeting();
+```
+
+Update our `index.html` file to include the new `main.js` file.
+
+```diff
+- <script src="/script.js"></script>
++ <script type="module" src="/script.js"></script>
++ <script type="module" src="/main.js"></script>
+```
+
+## Understand ES6 syntax
+
+ES6 is a prolific update to the JavaScript language. Introduced in 2015, ES6 added many new features to the language including arrow functions, `let` and `const`, promises, array methods, classes, import/export, `Map` and `Set`, and more.
+
+This workshop is using the latest best practices as of Summer 2023 which is heavily influenced by ES6. Think of variable declarations and `import`/`export`.
+
+## Understand import maps
+
+We can use import maps to be more intentional with our import strategy. Import maps are a way to map a module specifier to a URL. This is useful for mapping a module specifier to a local file or external library via CDN.
+
+```html
+<script type="importmap">
+  {
+    "imports": {
+      "#/": "/"
+    }
+  }
+</script>
+```
+
+We can move this JSON into a separate file and import it into our HTML file.
+
+```html
+<script type="importmap" src="/import_map.json"></script>
+```
+
+### Deno bonus
+
+Now, since Deno is a JavaScript runtime that strives for cross-compatibility with web browsers, we can use import maps in Deno as well. Let's learn how to run the code we have written for the browser, but in Deno.
+
+```sh
+deno run --import-map=import_map.json main.js
+```
 
 ## Understand external JavaScript libraries
 
 JavaScript libraries are JavaScript files written by other developers that you can use in your own projects. JavaScript libraries are useful for saving time and not reinventing the wheel.
 
-TODO: Demonstrate importing an external JavaScript library via CDN and import map.
+```json
+{
+  "imports": {
+    "canvas-confetti": "https://cdn.jsdelivr.net/npm/canvas-confetti@1.2.0/dist/confetti.module.mjs"
+  }
+}
+```
 
 ## Exercises
 
@@ -442,4 +493,4 @@ Use JavaScript to build full-stack applications more quickly by sharing code bet
 
 ---
 
-5th weekly workshop of [Hot Open Source Software Summer hackathon](https://acmcsuf.com/hot) series hosted by [**ACM CSUF Student Chapter**](https://acmcsuf.com)'s [**Open Source Software**](https://oss.acmcsuf.com) team.
+5th weekly workshop (July 14th, 2023) of [Hot Open Source Software Summer hackathon](https://acmcsuf.com/hot) series hosted by [**ACM CSUF Student Chapter**](https://acmcsuf.com)'s [**Open Source Software**](https://oss.acmcsuf.com) team.
