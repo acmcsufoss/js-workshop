@@ -157,7 +157,7 @@ These are data types that are not always featured in JavaScript programs.
 
 ### Plain JavaScript objects
 
-A plain old JavaScript object (POJO) is a record of unordered key-value pairs. Objects allow you to organize groups of related data.
+A plain old JavaScript object (POJO) is a record of unordered key-value pairs. Objects allow you to organize groups of related data. POJOs are comparable to Python `dict`ionaries.
 
 ```js
 const person = {
@@ -185,6 +185,12 @@ Append an item to the end of an array using the `push` method.
 ```js
 values.push("Hello, world!");
 console.log(values);
+```
+
+Arrays are considered "object" by the `typeof` operator.
+
+```js
+console.log(typeof values);
 ```
 
 Learn more about the [JavaScript data types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures). See [`typeof` unary operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof).
@@ -368,7 +374,7 @@ for (let i = 0; i < 10; i++) {
 
 ## Understand ES6 syntax
 
-(arrow functions, let/const, async/await, array methods, classes, import/export, etc.)
+(arrow functions, let/const, async/await, array methods, classes, import/export, Map/Set, etc.)
 
 TODO: Add content
 
@@ -414,13 +420,13 @@ TODO: Demonstrate importing an external JavaScript library via CDN and import ma
 
 ## Exercises
 
-Ingrain the skills you learned in today's workshop by practicing on your own. Here are some exercise ideas you can do to practice.
+Ingrain the skills you learned in today's workshop by practicing on your own. With there being so much to JavaScript, it is important to practice, encounter problems on your own, and learn how to solve them. Here are some exercise ideas you can do to practice JavaScript.
 
 - Create a JavaScript function that calculates the quadratic formula.
 - Create a JavaScript function that calculates the factorial of a number.
 - Create a JavaScript function that calculates the Fibonacci sequence.
 - Create a JavaScript function that calculates the sum of all numbers in an array.
-- Create a JavaScript function that visualizes data by accessing the DOM.
+- Create a JavaScript function that visualizes data by updating the DOM, such as creating a nested list of items or a table of data.
 
 ## Use cases of JavaScript
 
