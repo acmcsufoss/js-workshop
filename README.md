@@ -6,39 +6,6 @@
 
 Welcome to the world of JavaScript! This workshop is designed to help you get started with programming in JavaScript. Today, we'll cover the basics of JavaScript syntax.
 
-## Table of Contents
-
-- [Beginning of JavaScript](#beginning-of-javascript)
-- [JavaScript runtime and where to get one](#javascript-runtime-and-where-to-get-one)
-  - [How to print to the console](#how-to-print-to-the-console)
-  - [Simple expressions](#simple-expressions)
-  - [How to run a JavaScript file in a browser](#how-to-run-a-javascript-file-in-a-browser)
-- [How to declare a variable](#how-to-declare-a-variable)
-- [Understand data types](#understand-data-types)
-  - [Common data types](#common-data-types)
-  - [Uncommon data types](#uncommon-data-types)
-  - [Plain JavaScript objects](#plain-javascript-objects)
-  - [Arrays](#arrays)
-- [Flow control](#flow-control)
-  - [Conditional statements](#conditional-statements)
-    - [`if` statement](#if-statement)
-    - [`switch` statement](#switch-statement)
-  - [Loops](#loops)
-    - [`for` loop](#for-loop)
-    - [`while` loop](#while-loop)
-- [Understand variable scoping](#understand-variable-scoping)
-- [How to declare a function](#how-to-declare-a-function)
-- [Understand native JavaScript APIs](#understand-native-javascript-apis)
-  - [Understand the DOM](#understand-the-dom)
-  - [Find all APIs on MDN](#find-all-apis-on-mdn)
-- [Understand how to share code between files](#understand-how-to-share-code-between-files)
-- [Understand ES6 syntax](#understand-es6-syntax)
-- [Understand import maps](#understand-import-maps)
-- [Understand external JavaScript libraries](#understand-external-javascript-libraries)
-- [Exercises](#exercises)
-- [Use cases of JavaScript](#use-cases-of-javascript)
-- [Resources](#resources)
-
 ## Beginning of JavaScript
 
 JavaScript, despite its widespread usage and popularity, had humble beginnings. In 1995, Brendan Eich developed the language in just a few days while working at Netscape Communications Corporation.
@@ -49,9 +16,9 @@ JavaScript was created to provide a scripting language for web pages on the Nets
 
 JavaScript is an interpreted language, meaning that it is executed by a runtime, a program that executes code. Your web browser is a JavaScript runtime, and it executes JavaScript code that is included in web pages.
 
-However, you can also run JavaScript code outside of a web browser for unlimited applications. There are many JavaScript runtimes available, but the most popular one is Node.js. Node.js is a JavaScript runtime that is built on top of the V8 JavaScript engine, which is the same engine that powers the Google Chrome web browser.
+However, you can also run JavaScript code outside of a web browser for unlimited applications. There are many JavaScript runtimes available, but the most popular one is Node.js. Node.js is a JavaScript runtime that is built on top of the V8 JavaScript engine, which is the same engine that powers the Google Chrome web browser. Node.js and its successor, Deno are used to build web servers, command-line tools, and desktop applications.
 
-Let's start by opening your browser of choice and opening up the developer tools. In Chrome, you can do this by right-clicking anywhere on the page and selecting "Inspect". Then, click on the "Console" tab. This is where we can write JavaScript code and see the results.
+Let's start by opening your browser of choice to any page and opening up the developer tools. In Chrome, you can do this by right-clicking anywhere on the page and selecting "Inspect". Then, click on the "Console" tab. This is where we can write JavaScript code and see the results.
 
 ### How to print to the console
 
@@ -103,7 +70,7 @@ Now, spin up a local static HTTP file server.
 - You have [Node.js installed](https://nodejs.org/en/download/): `npx http-server .`
 - You have [Python installed](https://www.python.org/downloads/): `python -m http.server`
 
-Open `index.html` in your browser, then open the developer tools and click on the "Console" tab.
+Open `index.html` in your browser via the local static HTTP file server, then open the developer tools and click on the "Console" tab. You should see `Hello, world!` printed to the console.
 
 Your JavaScript code loads and executes as soon as the browser loads the page. From here, we can write JavaScript code in `script.js` and see the results on the `index.html` page.
 
@@ -454,21 +421,17 @@ We can use import maps to be more intentional with our import strategy. Import m
 <script type="importmap">
   {
     "imports": {
-      "#/": "/"
+      "#/": "./"
     }
   }
 </script>
 ```
 
-We can move this JSON into a separate file and import it into our HTML file.
-
-```html
-<script type="importmap" src="/import_map.json"></script>
-```
-
 ### Deno bonus
 
-Now, since Deno is a JavaScript runtime that strives for cross-compatibility with web browsers, we can use import maps in Deno as well. Let's learn how to run the code we have written for the browser but in Deno.
+Now, since Deno is a JavaScript runtime that strives for cross-compatibility with web browsers, we can use import maps in Deno as well.
+
+We can copy our import map into a separate `import_map.json` file and include it in the `deno run` command. Let's run the code we have written for the browser but in Deno.
 
 ```sh
 deno run --import-map=import_map.json main.js
