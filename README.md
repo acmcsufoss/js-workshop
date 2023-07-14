@@ -248,7 +248,7 @@ for (let i = 0; i < 10; i++) {
 }
 ```
 
-JavaScipt supports a `for...of` loop, which iterates over the values of an iterable object. This is useful for iterating over the values of an array.
+JavaScript supports a `for...of` loop, which iterates over the values of an iterable object. This is useful for iterating over the values of an array.
 
 ```js
 for (const value of iterable) {
