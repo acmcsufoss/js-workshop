@@ -2,6 +2,9 @@
 
 😎 JavaScript workshop for first-time JS programmers.
 
+- Self link: https://acmcsuf.com/js-workshop
+- Slide deck: https://acmcsuf.com/js-workshop-deck
+
 ## Getting started
 
 Welcome to the world of JavaScript! This workshop is designed to help you get started with programming in JavaScript. Today, we'll cover the basics of JavaScript syntax.
